@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{set index = 1}
+{% for el in list_titles %}
+    <ul>{{el[0]}}, {{el[2]}}
+    {% for sub_title in list_sub_titles %}
+        {if sub_title[2] != index}
+            {set index += 1}
+        {endif}
+
+    {% endfor %}
+    </ul>
+{% endfor %}
+
+{% endblock %}

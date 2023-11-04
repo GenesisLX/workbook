@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{%block content%}
+
+<div class="problem">
+    {% for el in list%}
+        {% for key in el%}
+<!--        <p>{{el[key]}}</p>-->
+        <div class="text_content">{{el[key][0]}}</div>
+
+        <div class="accordeon">
+            <div class="accordeon-title" data-name="accordeon_title">Решение</div>
+            <div class="accordeon_body">{{el[key][1]}}</div>
+            <div class="accordeon-title" data-name="accordeon_title">Критерии оценивания</div>
+            <div class="accordeon_body">{{el[key][2]}}</div>
+        </div>
+
+        <div>Конец блока</div>
+        <hr>
+        {% endfor%}
+    {% endfor%}
+    </div>
+</div>
+
+<input>
+<button>Нажми!</button>
+<div class="content-hidden">Этот текст был скрыт!</div>
+
+
+
+{%endblock%}
+
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/command.js') }}"></script>
+{% endblock %}
+
+
+
