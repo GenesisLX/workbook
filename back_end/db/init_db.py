@@ -42,6 +42,12 @@ def db_init_tables(db_name):
                 FOREIGN KEY(themes_id) REFERENCES themes(id));
                 """)
 
+            con.execute("""CREATE TABLE IF NOT EXISTS users(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            login TEXT UNIQUE NOT NULL,
+            password TEXT UNIQUE NOT NULL
+            )""")
+
 
     except Exception as ex:
         print(ex)

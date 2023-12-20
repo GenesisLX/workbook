@@ -120,11 +120,13 @@ def get_data_page_of_tasks(title_dict, sub_title_dict):
         fileName = sub_title_dict[key][2]
         if fileName not in key_dict:
             key_dict[fileName] = 0
-            tasks_dict.update(
-                get_problems_and_ans_from_site(key, fileName, len(tasks_dict.keys()) + 1, sub_title_dict[key][1]))
+            tasks_dict.update(get_problems_and_ans_from_site(key, fileName, len(tasks_dict.keys()) + 1, sub_title_dict[key][0]))
+            # tasks_dict.update(get_problems_and_ans_from_site(key, fileName, len(tasks_dict.keys()) + 1, sub_title_dict[key][0]))
+
         else:
             key_dict[fileName] += 1
-            tasks_dict.update(get_problems_and_ans_from_site(key, fileName + str(key_dict[fileName]), len(tasks_dict.keys()) + 1, sub_title_dict[key][1]))
+            tasks_dict.update(get_problems_and_ans_from_site(key, fileName + str(key_dict[fileName]), len(tasks_dict.keys()) + 1, sub_title_dict[key][0]))
+            # tasks_dict.update(get_problems_and_ans_from_site(key, fileName + str(key_dict[fileName]), len(tasks_dict.keys()) + 1, sub_title_dict[key][0]))
 
     for key in title_dict:
         if len(title_dict[key]) > 2:

@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{%block content%}
+<form method="get" action="{{ url_for('logout') }}">
+  <input type="submit" value="Выйти" />
+</form>
+<div class="board">
+    <form method="get">
+        <button type="delete_all">Убрать всё</button>
+    </form>
+    <form method="post">
+        <div class="block_submit">
+            <button type="submit">Составить вариант.</button>
+        </div>
+
+        <div class="list">
+            {% for el in dict%}
+            <div class="block">
+
+                <div class="input_block">
+<!--                    <button class="Counter-Button_Reduce">-</button>-->
+                    <input class="input_value_tasks" name="input_value{{dict[el][0]}}" id="{{dict[el][0]}}" value="0" tabindex="{{dict[el][0]}}" type="number" min="0" max="999">
+<!--                    <button class="Counter-Button_Add">+</button>-->
+                </div>
+
+                <div class="content">
+                    <p>{{el}}</p>
+                    <ul>
+                        {% for sub_title in dict[el][1] %}
+                        <li>{{sub_title[0]}}</li>
+                        {%endfor%}
+                    </ul>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </form>
+</div>
+
+
+{%endblock%}
+
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/c2.js') }}"></script>
+{% endblock %}

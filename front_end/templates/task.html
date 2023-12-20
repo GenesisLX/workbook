@@ -6,30 +6,46 @@
 {% endblock %}
 
 {%block content%}
+<div class="list_problem">
+    {% for task in list%}
+        {% for el in task%}
+            <div class="problem">
+            <!--        <p>{{el[key]}}</p>-->
+                <div class="text_content">{{el[0] | safe}}</div>
 
-<div class="problem">
-    {% for el in list%}
-        {% for key in el%}
-<!--        <p>{{el[key]}}</p>-->
-        <div class="text_content">{{el[key][0]}}</div>
+                {%if el[3] == 1%}
+                        <div class="input_ans">
+                            <label for="userAns">Ваш ответ:</label>
+                            <input name="userAns" type="text" min="0">
+                        </div>
+                    {%endif%}
 
-        <div class="accordeon">
-            <div class="accordeon-title" data-name="accordeon_title">Решение</div>
-            <div class="accordeon_body">{{el[key][1]}}</div>
-            <div class="accordeon-title" data-name="accordeon_title">Критерии оценивания</div>
-            <div class="accordeon_body">{{el[key][2]}}</div>
-        </div>
+                <div class="accordeon">
+                    <div class="accordeon-title" data-name="accordeon_title">Решение</div>
+                    <div class="accordeon_body">{{el[1] | safe}}</div>
 
-        <div>Конец блока</div>
-        <hr>
-        {% endfor%}
-    {% endfor%}
-    </div>
+                    {% if el[2] == "None"%}
+<!--                        <div class="accordeon-title" data-name="accordeon_title">Критерии оценивания</div>-->
+                        <div></div>
+                    {% else %}
+                        <div class="accordeon-title" data-name="accordeon_title">Критерии оценивания</div>
+                        <div class="accordeon_body">{{el[2] | safe}}</div>
+
+                    {% endif %}
+                </div>
+
+
+                <hr>
+            </div>
+        {% endfor %}
+    {% endfor %}
 </div>
 
-<input>
-<button>Нажми!</button>
-<div class="content-hidden">Этот текст был скрыт!</div>
+
+
+<!--<input>-->
+<!--<button>Нажми!</button>-->
+<!--<div class="content-hidden">Этот текст был скрыт!</div>-->
 
 
 

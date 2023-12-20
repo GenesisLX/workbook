@@ -3,7 +3,7 @@ import front_end.app as front
 
 if __name__ == '__main__':
     back.main()
-    back.get_titles("test.db")
+    # back.test()
     front.run()
 
 
