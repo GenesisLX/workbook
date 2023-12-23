@@ -6,6 +6,7 @@
 {% endblock %}
 
 {%block content%}
+
 <form method="get" action="{{ url_for('logout') }}">
   <input type="submit" value="Выйти" />
 </form>
@@ -40,6 +41,9 @@
             {%endfor%}
         </div>
     </form>
+</div>
+ <div>
+    <button>Обновить базу данных</button>
 </div>
 
 
