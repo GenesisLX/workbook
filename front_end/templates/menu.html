@@ -10,40 +10,48 @@
 <form method="get" action="{{ url_for('logout') }}">
   <input type="submit" value="Выйти" />
 </form>
+
 <div class="board">
+    <div class="box-1">
     <form method="get">
         <button type="delete_all">Убрать всё</button>
     </form>
-    <form method="post">
-        <div class="block_submit">
-            <button type="submit">Составить вариант.</button>
-        </div>
-
-        <div class="list">
-            {% for el in dict%}
-            <div class="block">
-
-                <div class="input_block">
-<!--                    <button class="Counter-Button_Reduce">-</button>-->
-                    <input class="input_value_tasks" name="input_value{{dict[el][0]}}" id="{{dict[el][0]}}" value="0" tabindex="{{dict[el][0]}}" type="number" min="0" max="999">
-<!--                    <button class="Counter-Button_Add">+</button>-->
-                </div>
-
-                <div class="content">
-                    <p>{{el}}</p>
-                    <ul>
-                        {% for sub_title in dict[el][1] %}
-                        <li>{{sub_title[0]}}</li>
-                        {%endfor%}
-                    </ul>
-                </div>
+    </div>
+    <div class="box-2">
+        <form method="post">
+            <div class="block_submit box-submit">
+                <button type="submit">Составить вариант.</button>
             </div>
-            {%endfor%}
-        </div>
-    </form>
+
+            <div class="list box-list">
+                {% for el in dict%}
+                <div class="block">
+
+                    <div class="input_block">
+    <!--                    <button class="Counter-Button_Reduce">-</button>-->
+                        <input class="input_value_tasks" name="input_value{{dict[el][0]}}" id="{{dict[el][0]}}" value="0" tabindex="{{dict[el][0]}}" type="number" min="0" max="999">
+    <!--                    <button class="Counter-Button_Add">+</button>-->
+                    </div>
+
+                    <div class="content">
+                        <p>{{el}}</p>
+                        <ul>
+                            {% for sub_title in dict[el][1] %}
+                            <li>{{sub_title[0]}}</li>
+                            {%endfor%}
+                        </ul>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </form>
+    </div>
 </div>
+<hr>
  <div>
-    <button>Обновить базу данных</button>
+     <form method="get" action="{{ url_for('update_db') }}">
+        <input type="submit" value="Обновить базу данных" />
+    </form>
 </div>
 
 

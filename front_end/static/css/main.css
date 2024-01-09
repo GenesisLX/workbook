@@ -60,3 +60,80 @@
   border: 2px solid black;
 }
 
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /*justify-items: center;*/
+    padding-top: 5px;
+    /*grid-template-areas:*/
+    /*"AAA"*/
+    /*"BBB"*/
+}
+
+[class^="box-"] {
+  display: grid;
+
+}
+
+.box-1 {
+    grid-area: A;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end:1;
+    /*z-index: 2;*/
+
+
+}
+
+.box-2 {
+    grid-area: B;
+    grid-column-start: 2;
+    /*grid-column-end: 6;*/
+    grid-row-start: 1;
+    grid-row-end: 2;
+    /*z-index: 1;*/
+
+    /*display: grid;*/
+
+}
+
+.box-submit {
+    /*grid-area: B;*/
+    grid-column-start: 1;
+    grid-row-start:2;
+    grid-row-end:2;
+}
+
+
+.box-list {
+    grid-area: C;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+}
+
+
+.mb-3 {
+    padding-bottom: 3px;
+}
+
+.form-label-log {
+    padding-right: 6px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.text-center {
+    display: flex;
+    justify-content: center;
+}
+
+.danger-messages {
+    padding-left: 0px;
+}
+

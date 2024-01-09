@@ -4,6 +4,7 @@
 from flask import *
 # from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
 from back_end.db.db_work import get_titles, reg_user, get_tasks, select_user_by_login
+from back_end.work_with_back import main
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 # from flask.ext.login import login_user, logout_user, current_user, login_required
 # from db import *
@@ -76,6 +77,14 @@ def menu():
         for i in range(1, len(dict)+1):
             val_tasks.append(int(request.form["input_value"+str(i)]))
 
+        for val in val_tasks:
+            if val != 0:
+                break
+        else:
+            return render_template("menu.html", dict=dict)
+
+
+
         # b = request.form["input_value"]
         # print(val_tasks)
         return tasks(val_tasks)
@@ -98,11 +107,24 @@ def registration():
     if request.method == 'POST':
         user_name = request.form['username']
         password = request.form['password']
-        reg_user(user_name, password)
-        login_user(User(user_name))
-        return redirect(url_for("menu"))
+
+        if len(user_name) > 3:
+            user = select_user_by_login(user_name)
+            if user is not None:
+                flash("Такой пользователь уже существует!", "error")
+            if len(password) > 4:
+                reg_user(user_name, password)
+                login_user(User(user_name))
+                return redirect(url_for("menu"))
+            else:
+                flash("Слишком короткий пароль!", "error")
+        else:
+            flash("Слишком короткое имя!", "error")
+
 
     return render_template('registration.html')
+
+
 
 
 @login_manager.user_loader
@@ -133,6 +155,15 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for("login"))
+
+
+@app.route("/update_db")
+@login_required
+def update_db():
+    main(True)
+    return redirect(url_for("menu"))
+
+
 
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
