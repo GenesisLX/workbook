@@ -12,17 +12,21 @@
 </form>
 
 <div class="board">
-    <div class="box-1">
-    <form method="get">
-        <button type="delete_all">Убрать всё</button>
-    </form>
-    </div>
+<!--    <div class="box-1">-->
+
+<!--    </div>-->
     <div class="box-2">
+<!--        <form method="get">-->
+<!--        <button type="delete_all">Убрать всё</button>-->
+<!--        </form>-->
+
         <form method="post">
+
+
             <div class="block_submit box-submit">
                 <button type="submit">Составить вариант.</button>
             </div>
-
+            <a href="{{ url_for('menu') }}">Убрать всё</a>
             <div class="list box-list">
                 {% for el in dict%}
                 <div class="block">

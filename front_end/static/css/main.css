@@ -63,7 +63,7 @@
 
 .board {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    /*grid-template-columns: repeat(6, 1fr);*/
     /*justify-items: center;*/
     padding-top: 5px;
     /*grid-template-areas:*/
@@ -76,12 +76,21 @@
 
 }
 
+.cont{
+    display: grid;
+    grid-column-gap: 30px;
+    grid-template-areas:
+    "A A A A   C C C C"
+    "B B B B   C C C C";
+}
+
 .box-1 {
     grid-area: A;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 1;
-    grid-row-end:1;
+    /*grid-column-start: 1;*/
+    /*grid-column-end: 1;*/
+    /*grid-row-start: 1;*/
+    /*grid-row-end:1;*/
+
     /*z-index: 2;*/
 
 
@@ -89,14 +98,21 @@
 
 .box-2 {
     grid-area: B;
-    grid-column-start: 2;
-    /*grid-column-end: 6;*/
-    grid-row-start: 1;
-    grid-row-end: 2;
+    /*grid-column-start: 2;*/
+    /*!*grid-column-end: 6;*!*/
+    /*grid-row-start: 1;*/
+    /*grid-row-end: 2;*/
     /*z-index: 1;*/
 
     /*display: grid;*/
 
+}
+
+.box-list {
+    grid-area: C;
+    /*grid-column-start: 2;*/
+    /*grid-column-end: 4;*/
+    /*grid-row-start: 1;*/
 }
 
 .box-submit {
@@ -107,12 +123,7 @@
 }
 
 
-.box-list {
-    grid-area: C;
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 1;
-}
+
 
 
 .mb-3 {

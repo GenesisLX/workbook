@@ -207,17 +207,18 @@ def update_db():
 @app.route("/")
 @login_required
 def hub():
-    if request.method == 'POST':
-        event = request.form
-    else:
-        return render_template("main.html")
+    # if request.method == 'POST':
+    #     event = request.form
+    # else:
+    # return render_template("main.html")
+    return redirect(url_for("registration"))
 
 
 
 
 def run():
     app.run()
-    get_titles("test.db")
+
 
 
 
